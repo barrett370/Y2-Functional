@@ -142,9 +142,37 @@
 ;;
 
 
+module N = struct
+  exception NegNat
+  type nat = Zero | Succ of nat;;
+
+  let rec add_nat x y = match x with
+    |Zero -> y
+    |Succ x -> add_nat x (Succ y) ;;
+
+  let rec sub_nat x y = match x,y with
+    |Zero,Succ y -> raise NegNat
+    |x,Zero-> x
+    |Succ x, Succ y -> sub_nat x y  ;;
+
+  let int_to_nat x =
+    let rec aux x n = match x with
+      |0 -> n
+      |x -> aux (x-1) (Succ n)
+    in aux x Zero ;;
+
+  let nat_to_int n =
+    let rec aux x n = match n with
+      | Zero -> x
+      | Succ n -> aux (x+1) n
+    in aux 0 n ;;
+
+  let rec modulo x y =
+    let rec aux x =
+      try
+        let s = sub_nat x y in aux s
+      with NegNat -> x
+    in aux x
 
 
-
-let P n = function
-  |0->None
-  |n->
+end
