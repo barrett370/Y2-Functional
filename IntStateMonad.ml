@@ -27,7 +27,7 @@ module StateMonad : (STATE_MONAD) =
    functor (State : STATE) ->
      struct
        type 'a m = State.s -> ('a * State.s)
-                               
+                                
        let (map : ('a -> 'b) -> ('a m -> 'b m)) =
          fun f a s -> let (a', s') = a s in (f a', s')
                                                 
