@@ -45,11 +45,6 @@ let rec dif' : int stream -> int stream = function
   | a -> lazy (Cons ((peek a)-(a |> next |> peek), 
               lazy (Cons ((a |> next |> peek),a |> next |> next)))) 
 
-(* let rec dif'' : int stream -> int stream = function 
-(* | a -> lazy (Cons ((map2 (-) (a |> peek) (a |> next |> peek))) , (dif' (lazy (Cons ( (a|> next |> peek), (a |> next |> next)))))) *)
-| a -> lazy (Cons (map2(-) (peek a) (a |> next |> peek), 
-            lazy (Cons ((a |> next |> peek), a |> next |> next)))) 
-             *)
 
 
 
