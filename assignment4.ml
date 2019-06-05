@@ -28,7 +28,7 @@ let newq () =
 
 (* let newq = newq' () *)
 
-let enq (q:'a queue) (x:'a) =
+let enq (q:'a queue) (x:'a) = 
   let value = Some x in
   let next_pointer = None in
   let new_elem = {value;next_pointer} in
